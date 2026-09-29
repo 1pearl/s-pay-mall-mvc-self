@@ -20,7 +20,7 @@ import java.io.IOException;
  * @Description TODO
  * @Author IvanZhao
  * @Date 2026/9/27
- * Version 1.0
+ *       Version 1.0
  */
 @Slf4j
 @Service
@@ -49,7 +49,7 @@ public class WeixinLoginServiceImpl implements ILoginService {
         // 1. 获取 accessToken
         String accessToken = getAccessToken();
         // 2. 生成 ticket
-        WeixinQrCodeReq qrCodeReq = WeixinQrCodeReq.of(2592000,100601);
+        WeixinQrCodeReq qrCodeReq = WeixinQrCodeReq.of(2592000, 100601);
         Call<WeixinQrCodeRes> call = weixinApiService.getQrCode(accessToken, qrCodeReq);
         WeixinQrCodeRes qrCodeRes = call.execute().body();
 
@@ -80,7 +80,6 @@ public class WeixinLoginServiceImpl implements ILoginService {
         log.info("扫码登录成功，已成功向用户微信推送模板消息 -> openid:{}, ticket:{}", openid, ticket);
     }
 
-
     /**
      * 获取/刷新微信 AccessToken（带 Guava 缓存机制）
      *
@@ -93,6 +92,7 @@ public class WeixinLoginServiceImpl implements ILoginService {
         if (StringUtils.isNotBlank(accessToken)) {
             return accessToken;
         }
+
         // 2. 缓存失效时，远程调用微信官方 API
         log.info("AccessToken 缓存已过期或未初始化，正在请求微信开放平台重新获取...");
         Call<WeixinTokenRes> call = weixinApiService.getAccessToken(appid, appSecret, "client_credential");
@@ -101,6 +101,7 @@ public class WeixinLoginServiceImpl implements ILoginService {
             log.error("获取微信 AccessToken 失败，微信返回结果为空");
             throw new RuntimeException("获取微信 AccessToken 失败！");
         }
+
         // 3. 写入缓存并返回
         accessToken = weixinTokenRes.getAccess_token();
         weixinAccessToken.put(appid, accessToken);

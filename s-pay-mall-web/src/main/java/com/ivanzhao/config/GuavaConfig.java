@@ -41,4 +41,14 @@ public class GuavaConfig {
                 .build();
     }
 
+    /**
+     * Guava EventBus 事件总线
+     *
+     * @return EventBus 实例
+     */
+    @Bean
+    public com.google.common.eventbus.EventBus eventBus() {
+        return new com.google.common.eventbus.EventBus();
+    }
+
 }
