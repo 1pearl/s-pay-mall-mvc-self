@@ -2,6 +2,8 @@ package com.ivanzhao.config;
 
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
+import com.google.common.eventbus.EventBus;
+import com.ivanzhao.controller.listener.OrderPaySuccessListener;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -42,13 +44,15 @@ public class GuavaConfig {
     }
 
     /**
-     * Guava EventBus 事件总线
+     * Guava EventBus 事件总线（并自动注册支付成功监听器）
      *
      * @return EventBus 实例
      */
-    @Bean
-    public com.google.common.eventbus.EventBus eventBus() {
-        return new com.google.common.eventbus.EventBus();
+    @Bean(name = "eventBus")
+    public EventBus eventBus(OrderPaySuccessListener orderPaySuccessListener) {
+        EventBus eventBus = new EventBus();
+        eventBus.register(orderPaySuccessListener);
+        return eventBus;
     }
 
 }

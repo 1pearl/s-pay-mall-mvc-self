@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @Description TODO
+ * @Description 支付宝客户端配置类，负责创建并向 Spring 容器注入 AlipayClient 单例 Bean
  * @Author IvanZhao
  * @Date 2026/9/29
  *       Version 1.0

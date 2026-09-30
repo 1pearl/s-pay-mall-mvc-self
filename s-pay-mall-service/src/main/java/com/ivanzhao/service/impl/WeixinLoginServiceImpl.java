@@ -17,7 +17,7 @@ import javax.annotation.Resource;
 import java.io.IOException;
 
 /**
- * @Description TODO
+ * @Description 微信扫码登录业务服务实现类，负责生成登录带参二维码、存储登录状态及推送模板消息
  * @Author IvanZhao
  * @Date 2026/9/27
  *       Version 1.0

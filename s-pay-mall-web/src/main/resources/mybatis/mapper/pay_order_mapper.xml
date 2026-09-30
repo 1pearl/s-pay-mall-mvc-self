@@ -35,14 +35,32 @@
         where order_id = #{orderId}
     </update>
 
+    <!-- 1. 超时关单更新 -->
     <update id="changeOrderClose" parameterType="java.lang.String">
         update pay_order set status = 'CLOSE', update_time = now()
         where order_id = #{orderId}
     </update>
 
+    <!-- 2. 支付成功更新 -->
     <update id="changeOrderPaySuccess" parameterType="com.ivanzhao.domain.po.PayOrder">
         update pay_order set status = #{status}, pay_time = now(), update_time = now()
         where order_id = #{orderId}
     </update>
+
+    <!-- 3. 查询超时未支付订单列表（用于定时任务1：订单超时关单） -->
+    <select id="queryTimeOutCloseOrderList" resultType="java.lang.String">
+        select order_id as orderId from pay_order
+        where status = "PAY_WAIT" and now() >= order_time + INTERVAL 30 MINUTE
+        order by id ASC
+        limit 50
+    </select>
+
+    <!-- 4. 查询未收到支付通知的订单列表（用于定时任务2：订单支付通知补偿） -->
+    <select id="queryNoPayNotifyOrder" resultType="java.lang.String">
+        select order_id as orderId from pay_order
+        where status = "PAY_WAIT" and now() >= order_time + INTERVAL 1 MINUTE
+        order by id ASC
+        limit 10
+    </select>
 
 </mapper>

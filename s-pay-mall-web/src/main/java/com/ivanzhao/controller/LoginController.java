@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 
 /**
- * @Description TODO
+ * @Description 微信扫码登录控制层，提供二维码Ticket生成与登录状态轮询接口
  * @Author IvanZhao
  * @Date 2026/9/27
  *       Version 1.0

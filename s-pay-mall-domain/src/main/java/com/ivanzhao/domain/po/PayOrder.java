@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 /**
- * @Description TODO
+ * @Description 支付订单持久化实体对象 (PO)，对应数据库表 pay_order
  * @Author IvanZhao
  * @Date 2026/9/28
  *       Version 1.0

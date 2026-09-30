@@ -8,10 +8,10 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 
 /**
- * @Description TODO
+ * @Description 商品视图对象 (VO)，封装商品基本信息与价格
  * @Author IvanZhao
  * @Date 2026/9/28
- * Version 1.0
+ *       Version 1.0
  */
 @Data
 @Builder

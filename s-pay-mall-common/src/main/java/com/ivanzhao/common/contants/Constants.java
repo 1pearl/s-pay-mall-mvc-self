@@ -39,4 +39,18 @@ public class Constants {
 
     }
 
+    @Getter
+    @AllArgsConstructor
+    public enum AlipayCode {
+        SUCCESS("10000", "接口调用成功"),
+        PAYING("10003", "用户支付中"),
+        FAILED("40004", "业务处理失败"),
+        ERROR("20000", "服务不可用"),
+        ;
+
+        private final String code;
+        private final String desc;
+    }
+
+
 }

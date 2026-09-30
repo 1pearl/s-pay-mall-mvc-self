@@ -4,10 +4,10 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * @Description TODO
+ * @Description 支付宝沙箱支付配置属性绑定类，自动映射 application.yml 中 alipay 节点配置
  * @Author IvanZhao
  * @Date 2026/9/29
- * Version 1.0
+ *       Version 1.0
  */
 @Data
 @ConfigurationProperties(prefix = "alipay",ignoreInvalidFields = true)

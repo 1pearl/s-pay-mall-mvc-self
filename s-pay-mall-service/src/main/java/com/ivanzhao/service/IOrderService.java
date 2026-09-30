@@ -3,11 +3,13 @@ package com.ivanzhao.service;
 import com.ivanzhao.domain.req.ShopCartReq;
 import com.ivanzhao.domain.res.PayOrderRes;
 
+import java.util.List;
+
 /**
  * @Description 订单服务接口
  * @Author IvanZhao
  * @Date 2026/9/28
- * Version 1.0
+ *       Version 1.0
  */
 public interface IOrderService {
 
@@ -34,4 +36,19 @@ public interface IOrderService {
      * @return 是否变更成功
      */
     boolean changeOrderClose(String orderId);
+
+
+    /**
+     * 【定时任务1】查询超时未支付订单列表（用于订单超时关单）。
+     * 
+     * @return 超时未支付订单的订单号列表
+     */
+    List<String> queryTimeOutCloseOrderList();
+
+    /**
+     * 【定时任务2】查询未收到支付通知的订单列表（用于支付通知补偿）。
+     * 
+     * @return 未收到支付通知的订单号列表
+     */
+    List<String> queryNoPayNotifyOrder();
 }

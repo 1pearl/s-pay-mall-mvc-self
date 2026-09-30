@@ -6,10 +6,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * @Description TODO
+ * @Description 购物车下单请求入参对象 (DTO)
  * @Author IvanZhao
  * @Date 2026/9/28
- * Version 1.0
+ *       Version 1.0
  */
 @Data
 @Builder

@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 
 /**
- * @Description TODO
+ * @Description 模拟商品中心 RPC 远程服务调用客户端
  * @Author IvanZhao
  * @Date 2026/9/28
- * Version 1.0
+ *       Version 1.0
  */
 @Slf4j
 @Service
